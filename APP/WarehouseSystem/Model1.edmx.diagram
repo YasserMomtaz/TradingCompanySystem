@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2a18f907f0dd48f8afd3ae60a9a181df" Name="Diagram1">
+        <EntityTypeShape EntityType="WareHouseSystemModel.Client" Width="1.5" PointX="3.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WareHouseSystemModel.Product" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WareHouseSystemModel.Product_Entry" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WareHouseSystemModel.Product_Release" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WareHouseSystemModel.Product_Warehouse" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WareHouseSystemModel.Supplier" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WareHouseSystemModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WareHouseSystemModel.WareHouse" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="WareHouseSystemModel.FK_Product_Release_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="WareHouseSystemModel.FK_Product_Entry_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="WareHouseSystemModel.FK_Product_Release_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="WareHouseSystemModel.FK_Product_Warehouse_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="WareHouseSystemModel.FK_Product_Entry_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="WareHouseSystemModel.FK_Product_Entry_WareHouse" ManuallyRouted="false" />
+        <AssociationConnector Association="WareHouseSystemModel.FK_Product_Release_WareHouse" ManuallyRouted="false" />
+        <AssociationConnector Association="WareHouseSystemModel.FK_Product_Warehouse_WareHouse" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,17 @@
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\bin\Debug\WarehouseSystem.exe.config
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\bin\Debug\WarehouseSystem.exe
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\bin\Debug\WarehouseSystem.pdb
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\obj\Debug\WarehouseSystem.csproj.AssemblyReference.cache
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\obj\Debug\WarehouseSystem.csproj.SuggestedBindingRedirects.cache
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\obj\Debug\WarehouseSystem.Form1.resources
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\obj\Debug\WarehouseSystem.Properties.Resources.resources
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\obj\Debug\WarehouseSystem.csproj.GenerateResource.cache
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\obj\Debug\WarehouseSystem.csproj.CoreCompileInputs.cache
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\obj\Debug\WarehouseSystem.exe
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\obj\Debug\WarehouseSystem.pdb
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\bin\Debug\EntityFramework.dll
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\bin\Debug\EntityFramework.SqlServer.dll
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\bin\Debug\EntityFramework.xml
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\bin\Debug\EntityFramework.SqlServer.xml
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\obj\Debug\WarehouseSystem.csproj.CopyComplete
+E:\ITI\Entity Frame\Project\APP\WarehouseSystem\obj\Debug\WarehouseSystem.transferProduct.resources

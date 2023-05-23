@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WareHouseSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Product_Release" Relationship="Self.FK_Product_Release_Client" FromRole="Client" ToRole="Product_Release" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Unit" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Product_Entry" Relationship="Self.FK_Product_Entry_Product" FromRole="Product" ToRole="Product_Entry" />
+    <NavigationProperty Name="Product_Release" Relationship="Self.FK_Product_Release_Product" FromRole="Product" ToRole="Product_Release" />
+    <NavigationProperty Name="Product_Warehouse" Relationship="Self.FK_Product_Warehouse_Product" FromRole="Product" ToRole="Product_Warehouse" />
+  </EntityType>
+  <EntityType Name="Product_Entry">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Warehouse_ID" />
+      <PropertyRef Name="Product_Code" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Warehouse_ID" Type="Int32" Nullable="false" />
+    <Property Name="Product_Code" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="ProductionDate" Type="DateTime" Precision="0" />
+    <Property Name="EXPDate" Type="DateTime" Precision="0" />
+    <Property Name="Supplier_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_Entry_Product" FromRole="Product_Entry" ToRole="Product" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK_Product_Entry_Supplier" FromRole="Product_Entry" ToRole="Supplier" />
+    <NavigationProperty Name="WareHouse" Relationship="Self.FK_Product_Entry_WareHouse" FromRole="Product_Entry" ToRole="WareHouse" />
+  </EntityType>
+  <EntityType Name="Product_Release">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Warehouse_ID" />
+      <PropertyRef Name="Product_Code" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Warehouse_ID" Type="Int32" Nullable="false" />
+    <Property Name="Product_Code" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="ProductionDate" Type="DateTime" Precision="0" />
+    <Property Name="EXPDate" Type="DateTime" Precision="0" />
+    <Property Name="Client_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Product_Release_Client" FromRole="Product_Release" ToRole="Client" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_Release_Product" FromRole="Product_Release" ToRole="Product" />
+    <NavigationProperty Name="WareHouse" Relationship="Self.FK_Product_Release_WareHouse" FromRole="Product_Release" ToRole="WareHouse" />
+  </EntityType>
+  <EntityType Name="Product_Warehouse">
+    <Key>
+      <PropertyRef Name="Product_Code" />
+      <PropertyRef Name="WareHouse_ID" />
+    </Key>
+    <Property Name="Product_Code" Type="Int32" Nullable="false" />
+    <Property Name="WareHouse_ID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Unit" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_Warehouse_Product" FromRole="Product_Warehouse" ToRole="Product" />
+    <NavigationProperty Name="WareHouse" Relationship="Self.FK_Product_Warehouse_WareHouse" FromRole="Product_Warehouse" ToRole="WareHouse" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Product_Entry" Relationship="Self.FK_Product_Entry_Supplier" FromRole="Supplier" ToRole="Product_Entry" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="WareHouse">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Manger" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Product_Entry" Relationship="Self.FK_Product_Entry_WareHouse" FromRole="WareHouse" ToRole="Product_Entry" />
+    <NavigationProperty Name="Product_Release" Relationship="Self.FK_Product_Release_WareHouse" FromRole="WareHouse" ToRole="Product_Release" />
+    <NavigationProperty Name="Product_Warehouse" Relationship="Self.FK_Product_Warehouse_WareHouse" FromRole="WareHouse" ToRole="Product_Warehouse" />
+  </EntityType>
+  <Association Name="FK_Product_Release_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Product_Release" Type="Self.Product_Release" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product_Release">
+        <PropertyRef Name="Client_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Entry_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Product_Entry" Type="Self.Product_Entry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Product_Entry">
+        <PropertyRef Name="Product_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Release_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_Release" Type="Self.Product_Release" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Product_Release">
+        <PropertyRef Name="Product_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Warehouse_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Product_Warehouse" Type="Self.Product_Warehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Product_Warehouse">
+        <PropertyRef Name="Product_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Entry_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+    <End Role="Product_Entry" Type="Self.Product_Entry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product_Entry">
+        <PropertyRef Name="Supplier_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Entry_WareHouse">
+    <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="1" />
+    <End Role="Product_Entry" Type="Self.Product_Entry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WareHouse">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product_Entry">
+        <PropertyRef Name="Warehouse_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Release_WareHouse">
+    <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_Release" Type="Self.Product_Release" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WareHouse">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product_Release">
+        <PropertyRef Name="Warehouse_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Warehouse_WareHouse">
+    <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="1" />
+    <End Role="Product_Warehouse" Type="Self.Product_Warehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WareHouse">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product_Warehouse">
+        <PropertyRef Name="WareHouse_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WareHouseSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clients" EntityType="Self.Client" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Product_Entry" EntityType="Self.Product_Entry" />
+    <EntitySet Name="Product_Release" EntityType="Self.Product_Release" />
+    <EntitySet Name="Product_Warehouse" EntityType="Self.Product_Warehouse" />
+    <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="WareHouses" EntityType="Self.WareHouse" />
+    <AssociationSet Name="FK_Product_Release_Client" Association="Self.FK_Product_Release_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Product_Release" EntitySet="Product_Release" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Entry_Product" Association="Self.FK_Product_Entry_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Product_Entry" EntitySet="Product_Entry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Release_Product" Association="Self.FK_Product_Release_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Product_Release" EntitySet="Product_Release" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Warehouse_Product" Association="Self.FK_Product_Warehouse_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Product_Warehouse" EntitySet="Product_Warehouse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Entry_Supplier" Association="Self.FK_Product_Entry_Supplier">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="Product_Entry" EntitySet="Product_Entry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Entry_WareHouse" Association="Self.FK_Product_Entry_WareHouse">
+      <End Role="WareHouse" EntitySet="WareHouses" />
+      <End Role="Product_Entry" EntitySet="Product_Entry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Release_WareHouse" Association="Self.FK_Product_Release_WareHouse">
+      <End Role="WareHouse" EntitySet="WareHouses" />
+      <End Role="Product_Release" EntitySet="Product_Release" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Warehouse_WareHouse" Association="Self.FK_Product_Warehouse_WareHouse">
+      <End Role="WareHouse" EntitySet="WareHouses" />
+      <End Role="Product_Warehouse" EntitySet="Product_Warehouse" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
